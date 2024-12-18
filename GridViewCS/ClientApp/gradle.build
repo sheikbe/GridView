@@ -1,0 +1,30 @@
+plugins {
+    id 'com.moowork.node' version '1.3.1'
+}
+
+node {
+    version = '14.17.0'
+    npmVersion = '6.14.13'
+    download = true
+}
+
+task build(type: NpmTask) {
+    args = ['run', 'build']
+}
+
+task test(type: NpmTask) {
+    args = ['run', 'test']
+}
+
+task cypressRun(type: NpmTask) {
+    args = ['run', 'cypress:run']
+}
+
+task cypressOpen(type: NpmTask) {
+    args = ['run', 'cypress:open']
+}
+
+build.dependsOn npmInstall
+test.dependsOn npmInstall
+cypressRun.dependsOn npmInstall
+cypressOpen.dependsOn npmInstall
