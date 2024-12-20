@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>GridView RowDataBound Example</title>
+</head>
+<body>
+    <h3>GridView RowDataBound Example</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Customer ID</th>
+                <th>Company Name</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="salesOrderHeader : ${listSalesOrderHeaders}">
+                <td th:text="${salesOrderHeader.customerId}"></td>
+                <td th:utext="'<i>' + ${salesOrderHeader.companyName} + '</i>'"></td>
+                <td th:text="${salesOrderHeader.firstName}"></td>
+                <td th:text="${salesOrderHeader.lastName}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
