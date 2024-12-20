@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>GridView RowCommand Example</title>
+</head>
+<body>
+    <h3>GridView RowCommand Example</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Customer ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="salesOrderHeader : ${listSalesOrderHeaders}">
+                <td th:text="${salesOrderHeader.customerId}"></td>
+                <td th:text="${salesOrderHeader.firstName}"></td>
+                <td th:text="${salesOrderHeader.lastName}"></td>
+                <td>
+                    <form action="#" th:action="@{/addContact}" method="post">
+                        <input type="hidden" th:value="${salesOrderHeader.customerId}" name="customerId" />
+                        <button type="submit">Add</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h3>Contacts:</h3>
+    <ul>
+        <li th:each="contact : ${contacts}" th:text="${contact}"></li>
+    </ul>
+</body>
+</html>
